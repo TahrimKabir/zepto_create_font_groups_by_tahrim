@@ -1,6 +1,7 @@
 <?php
 require 'Uploader.php';
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['upload_font'])) {
         $uploader = new Uploader();

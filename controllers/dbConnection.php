@@ -5,7 +5,7 @@ class DbConnection
 
     public function __construct()
     {
-        $this->connection = new mysqli('localhost', 'root', '', 'test'); // Adjust parameters as necessary
+        $this->connection = new mysqli('localhost', 'root', '', 'font_group'); // Adjust parameters as necessary
 
         // Check connection
         if ($this->connection->connect_error) {

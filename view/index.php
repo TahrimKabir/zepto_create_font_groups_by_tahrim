@@ -10,6 +10,7 @@
     <input type="file" name="upload_font" id="upload_font_file">
     
 </form>
+<div id="font_list"></div>
 
 <script>
 document.getElementById('upload_font_file').addEventListener('change', function () {
@@ -19,11 +20,11 @@ document.getElementById('upload_font_file').addEventListener('change', function 
     if (file) {
         formData.append('upload_font', file);
 
-        // Create an AJAX request object
+  
         let xhr = new XMLHttpRequest();
         xhr.open('POST', '../controllers/upload.php', true);
 
-        // Callback for when the request is complete
+   
         xhr.onload = function () {
             if (xhr.status === 200) {
                 console.log('File uploaded successfully:', xhr.responseText);
@@ -32,7 +33,7 @@ document.getElementById('upload_font_file').addEventListener('change', function 
             }
         };
 
-        // Send the request
+        
         xhr.send(formData);
     } else {
         console.log('No file selected');
