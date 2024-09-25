@@ -50,7 +50,7 @@ function loadInsertedList() {
             
             let fonts = JSON.parse(xhr.responseText);
 
-            
+            console.log(fonts);
             let output = '<table>';
             output += '<tr><th>Font Name</th><th>File Name</th></tr>'; 
             if (fonts.length > 0) {
@@ -72,6 +72,25 @@ function loadInsertedList() {
 
    
     xhr.send();
+}
+
+function deleteFont(fontId) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('DELETE', '../controllers/delete_font.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json'); // Set the content type to JSON
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            console.log(fontId);
+            console.log('Font deleted successfully:', xhr.responseText);
+            loadInsertedList(); // Refresh the font list after deletion
+        } else {
+            console.log('Error deleting font.');
+        }
+    };
+
+    // Send the ID as JSON
+    xhr.send(JSON.stringify({ id: fontId }));
 }
 
 

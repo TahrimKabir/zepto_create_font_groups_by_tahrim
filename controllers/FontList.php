@@ -11,7 +11,7 @@ class FontList extends DbConnection
     public function getUploadedFonts()
     {
         $conn = $this->getConnection(); // Get the database connection
-        $query = "SELECT font_name, file_name, file_path FROM uploaded_fonts"; // SQL query to get font list
+        $query = "SELECT * FROM uploaded_fonts"; // SQL query to get font list
         $result = mysqli_query($conn, $query);
 
         // Check if any rows are returned
@@ -19,6 +19,7 @@ class FontList extends DbConnection
             $fontList = [];
             while ($row = mysqli_fetch_assoc($result)) {
                 $fontList[] = [
+                    'id'=>$row['id'],
                     'font_name' => $row['font_name'],
                     'file_name' => $row['file_name'],
                     'file_path' => $row['file_path']
